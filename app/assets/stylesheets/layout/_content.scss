@@ -1,0 +1,93 @@
+// Page is wrapped around the content if we need to use specific backgrounds
+.page {
+    &--white {
+        background: $color-white;
+    }
+    &--grey {
+        background: $color-silver-light;
+    }
+}
+
+// All layouts use a layout container
+.layout {
+    @include container();
+    @include innerpad();
+    padding-bottom: 6.4rem;
+    padding-top: 3.2rem;
+
+    @include breakpoint($bp-md) {
+        padding-bottom: 10rem;
+        padding-top: 5rem;
+    }
+
+    &--xs {
+        max-width: $container-sm;
+        margin-top: 6rem;
+    }
+
+    &--sm {
+        max-width: $container-md;
+    }
+
+    &--md {
+        max-width: 960px;
+    }
+
+    &--lg {
+        @include containerlarge();
+    }
+
+    &--full {
+        max-width: none !important;
+    }
+
+    &--no-pv {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+    &--s-pb {
+        padding-bottom: 2rem;
+    }
+
+    &--faq {
+        h3 {
+            margin: 4rem 0 2rem;
+        }
+    }
+}
+
+.layout-category {
+    @include innerpad();
+    @include breakpoint($bp-md) {
+        display: grid;
+        grid-template-columns: 264px 4fr;
+        grid-column-gap: 4rem;
+    }
+    &__side {
+        @include breakpoint($bp-md) {
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(249, 249, 249, 1) 100%
+            );
+            padding-top: 1rem;
+            padding-right: $container-pad;
+        }
+    }
+    &__main {
+        @include breakpoint($bp-md) {
+            padding-top: 1rem;
+            max-width: calc(100vw - 264px - 12rem);
+        }
+    }
+}
+
+// This is a temp hr used to seperate sandbox components
+.layout-hr {
+    height: 1px;
+    width: 100vw;
+    background: #eee;
+    border: none;
+    margin: 0;
+}

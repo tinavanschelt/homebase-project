@@ -1,0 +1,241 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-start {
+    display: flex;
+    align-items: flex-start;
+}
+
+@mixin fill($position: absolute, $top: 0, $right: 0, $bottom: 0, $left: 0) {
+    bottom: $bottom;
+    left: $left;
+    position: $position;
+    right: $right;
+    top: $top;
+}
+
+@mixin margin-horizontal($size) {
+    margin-left: $size;
+    margin-right: $size;
+}
+
+@mixin margin-vertical($size) {
+    margin-bottom: $size;
+    margin-top: $size;
+}
+
+@mixin ph($size) {
+    padding-left: $size;
+    padding-right: $size;
+}
+
+@mixin pv($size) {
+    padding-bottom: $size;
+    padding-top: $size;
+}
+
+@mixin breakpoint($point) {
+    @media (min-width: $point) {
+        @content;
+    }
+}
+@mixin breakpointMax($point) {
+    @media (max-width: $point) {
+        @content;
+    }
+}
+@mixin prefix($property, $value) {
+    -webkit-#{$property}: #{$value};
+    -moz-#{$property}: #{$value};
+    -ms-#{$property}: #{$value};
+    -o-#{$property}: #{$value};
+    #{$property}: #{$value};
+}
+@mixin transition($transition...) {
+    @include prefix('transition', #{$transition});
+}
+
+@mixin transform($transform...) {
+    @include prefix('transform', #{$transform});
+}
+
+@mixin greyimg() {
+    mix-blend-mode: multiply;
+}
+
+@mixin hover {
+    &:hover {
+        @media (min-width: $bp-md) {
+            @content;
+        }
+    }
+}
+
+@mixin container {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint($bp-md) {
+        max-width: $container-md;
+    }
+    @include breakpoint($bp-md) {
+        max-width: $container;
+    }
+}
+
+@mixin containerlarge {
+    width: 100%;
+    max-width: $container-lg;
+    margin-left: auto;
+    margin-right: auto;
+    @include breakpoint($bp-md) {
+        max-width: $container-lg;
+    }
+}
+
+@mixin innerpad {
+    padding-left: $container-pad;
+    padding-right: $container-pad;
+    @include breakpoint($bp-md) {
+        @include ph($container-pad-lg);
+    }
+}
+
+@mixin innerpadmobile {
+    @include breakpointMax($bp-md) {
+        padding-left: $container-pad;
+        padding-right: $container-pad;
+    }
+}
+
+@mixin breakoutcontainermobile {
+    @include breakpointMax($bp-md) {
+        @include margin-horizontal(-$container-pad);
+    }
+}
+
+@mixin scroll {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+        display: none;
+        width: 0px;
+    }
+}
+
+@mixin scrollvertical {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+        display: none !important;
+    }
+}
+
+@mixin scrollhorizontal {
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    // Ensures users who suffer from motion sickness can stop smooth scrolling from their browser
+    @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+    }
+    &::-webkit-scrollbar {
+        display: none !important;
+    }
+}
+
+$chevron-width: 2px;
+$chevron-color: $color-silver-dark;
+@mixin chevron {
+    &::after {
+        border-radius: 1px;
+        border-right: $chevron-width solid $color-gray;
+        border-top: $chevron-width solid $color-gray;
+        content: '';
+        display: inline-block;
+        margin-left: auto;
+        transform: rotate(45deg);
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+}
+
+@mixin chevronleft() {
+    &::after {
+        border-radius: 1px;
+        border-top: $chevron-width solid $chevron-color;
+        border-left: $chevron-width solid $chevron-color;
+        content: '';
+        display: inline-block;
+        margin-left: auto;
+        transform: rotate(-45deg);
+        width: 9px;
+        height: 9px;
+    }
+}
+
+@mixin ellipsis-menu($right: -1.5rem, $top: 1.7rem) {
+    @include breakpointMax($bp-md) {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row-reverse;
+        position: absolute;
+        right: $right;
+        top: $top;
+
+        &::before {
+            align-content: center;
+            background: asset-url('ellipsis.svg') no-repeat center;
+            content: '';
+            display: inline-block !important;
+            height: 3rem;
+            margin-left: auto;
+            padding: 3rem 2rem;
+            width: 1rem;
+        }
+
+        &:not(&--visible) > * {
+            display: none;
+        }
+
+        &--inner {
+            box-shadow: $base-box-shadow;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            top: 0.25rem;
+            z-index: z('default');
+
+            &::after {
+                border: $base-border-style 1rem transparent;
+                border-left-color: $color-silver;
+                content: '';
+                height: 0;
+                left: 100%;
+                margin-top: 1.75rem;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                width: 0;
+            }
+        }
+
+        &--link {
+            display: inline-block;
+            font-size: 1.75rem;
+            z-index: z('default');
+
+            &:not(:first-child) {
+                border-top: 0;
+            }
+        }
+    }
+}

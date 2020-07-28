@@ -10,6 +10,24 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+// Variables
+@import 'base/variables';
+
+// Utils
+@import 'utils/mixins';
+@import 'utils/helpers';
+@import 'utils/functions';
+@import 'utils/utils';
+
+// Base
+@import 'base/base';
+@import 'base/buttons';
+@import 'base/normalize';
+@import 'base/forms';
+@import 'base/grid';
+@import 'base/typography';
+
+// Layout
+@import 'layout/content';

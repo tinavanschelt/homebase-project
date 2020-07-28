@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    min-height: 100vh;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: $html-font-size;
+    text-size-adjust: 100%;
+
+    @include breakpoint($bp-md) {
+        font-size: $html-font-size-lg;
+    }
+}
+
+body {
+    background-color: $color-clean;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}

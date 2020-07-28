@@ -1,0 +1,53 @@
+.grid {
+    display: grid;
+    grid-gap: $pv-sm;
+    grid-template-columns: 100%;
+
+    @include breakpoint($bp-md) {
+        grid-gap: $pv;
+    }
+
+    .grid__item--stretch {
+        grid-column-end: span 1;
+    }
+
+    &--two {
+        grid-template-columns: repeat(2, 1fr);
+
+        .grid__item--stretch {
+            grid-column-end: span 2;
+        }
+    }
+
+    &--two-up {
+        @include breakpoint($bp-md) {
+            grid-template-columns: repeat(2, 1fr);
+
+            .grid__item--stretch {
+                grid-column-end: span 2;
+            }
+        }
+    }
+
+    &--three {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &--three-up {
+        @include breakpoint($bp-md) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &--four-up {
+        @include breakpoint($bp-md) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &--five-up {
+        @include breakpoint($bp-md) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+}
