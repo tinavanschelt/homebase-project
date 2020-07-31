@@ -2,9 +2,20 @@
     background-color: $color-clean;
     align-items: center;
     display: flex;
+    height: 50px;
     justify-content: space-between;
     padding: 1em;
     width: 100%;
+
+    .avatar {
+        align-self: flex-start;
+        background-color: $color-white;
+        clip-path: circle(35px at center);
+
+        img {
+            width: 70px;
+        }
+    }
 
     .logo {
         height: 30px;
