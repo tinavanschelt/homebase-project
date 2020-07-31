@@ -1,0 +1,28 @@
+.bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    &__item {
+        align-items: center;
+        background-color: $color-clean;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1em;
+        text-transform: uppercase;
+
+        img {
+            height: 24px;
+            margin-bottom: 0.5em;
+            width: auto;
+        }
+
+        &:hover {
+            background-color: darken($color-clean, 4%);
+        }
+    }
+}

@@ -4,19 +4,19 @@ import { iconFlag, iconSmile, iconCalendar, iconPlus } from '../helpers/icons'
 
 const BottomNav = () => (
     <div className="bottom-nav">
-        <span className="bottom-nav__icon">
+        <span className="bottom-nav__item">
             <img src={iconFlag} alt="Home" />
             Home
         </span>
-        <span className="bottom-nav__icon">
+        <span className="bottom-nav__item">
             <img src={iconSmile} alt="My Stuff" />
             My Stuff
         </span>
-        <span className="bottom-nav__icon">
+        <span className="bottom-nav__item">
             <img src={iconCalendar} alt="Calendar" />
             Calendar
         </span>
-        <span className="bottom-nav__icon">
+        <span className="bottom-nav__item">
             <img src={iconPlus} alt="New" />
             New
         </span>
