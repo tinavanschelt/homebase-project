@@ -20,9 +20,15 @@ html {
 }
 
 body {
-    background-color: $color-clean;
+    background-color: lighten($color-clean, 4%);
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 0;
+    padding: 1em;
+}
+
+.logo {
+    img {
+        width: 60px;
+    }
 }

@@ -15,11 +15,16 @@
 }
 
 body {
-    color: $base-font-color;
+    color: $color-black;
     font-family: $base-font-family;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     line-height: $base-line-height;
+
+    &.sandbox {
+        background-color: $color-white;
+        padding: 2em 3em;
+    }
 }
 
 .container {
@@ -40,7 +45,7 @@ h5,
     @include headingstyle();
     display: block;
     line-height: $heading-line-height;
-    margin: 0 0 1rem;
+    margin: 0 0 2rem;
 
     &.section-title {
         font-family: $font-base;
@@ -113,16 +118,17 @@ p {
 
 a {
     background-color: transparent;
-    color: $heading-font-color;
-    text-decoration: none; // Remove default underline on achor elements
+    color: $color-gray-dark;
+    font-size: 1.4rem;
+    text-decoration: none;
     -webkit-text-decoration-skip: objects;
 
-    &:active {
+    @include hover {
         outline-width: 0;
-        color: darken($action-color, 2%);
+        color: $color-salmon;
     }
 
-    @include hover {
+    &:active {
         outline-width: 0;
         color: darken($action-color, 2%);
     }
@@ -135,95 +141,20 @@ a {
 strong,
 b {
     font-weight: $font-semibold-weight;
-    color: $color-black;
 }
 
-abbr {
-    border-bottom: dotted $base-border-width currentColor;
-    cursor: help;
-    text-decoration: none;
-}
-
-img {
-    border-style: none;
-    display: block;
-}
-
-hr {
-    @include margin-vertical($mv-lg);
-    background-color: $color-silver-light;
-    border: 0;
-    box-sizing: content-box;
-    height: $border-width-lg;
-    overflow: visible;
-}
-
-.text-alert {
-    color: $alert-color !important;
-}
-
-.text-highlight,
-.highlight {
-    color: $highlight-color !important;
-}
-
-.text-semibold {
-    font-weight: $font-semibold-weight;
-}
-
-.text-bold {
-    font-weight: $font-bold-weight;
-}
-
-.dl {
-    &__row {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        padding: $pv 0;
-        border-top: $base-border-style $base-border-width $line-color;
-        &:not(:last-child) {
-            // border-bottom: $base-border-style $base-border-width $line-color; // Remove border from last item
-        }
-        dt,
-        dd {
-            margin: 0;
-            padding: $pv-xs 0;
-        }
-    }
-}
-dt,
-dd {
-    color: $base-font-color;
-}
-dt {
-    font-weight: normal;
-}
-dd {
-    margin: 0;
-}
-
-.action-color {
-    color: $action-color;
-}
-
-.title-with-tag {
+.header-with-logo {
+    align-items: flex-end;
     display: flex;
     justify-content: space-between;
-}
+    margin-bottom: 2em;
 
-// I don't think this is used but I'd like to check before removing as it's a
-// common name and I could have easily lost one somewhere.
-.label {
-    background-color: $action-color;
-    background-color: $heading-font-color;
-    background-color: $line-color;
-    border-radius: $base-border-radius;
-    color: $color-white;
-    color: $color-gray;
-    font-size: 0.9rem;
-    // font-weight: normal;
-    margin-left: 1em;
-    padding: 0.4em 0.6em;
-    text-transform: capitalize;
+    h2 {
+        margin-bottom: 0;
+    }
+
+    img {
+        margin-bottom: 0.75em;
+        width: 60px;
+    }
 }

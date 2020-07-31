@@ -1,0 +1,63 @@
+.sandbox-section {
+    margin: 0 0 4em;
+}
+
+.color-cards {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 2em 0;
+
+    &__card {
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        padding: 2em;
+
+        &--clean {
+            background-color: $color-clean;
+        }
+
+        &--blue {
+            background-color: $color-blue;
+        }
+
+        &--butter {
+            background-color: $color-butter;
+        }
+
+        &--salmon {
+            background-color: $color-salmon;
+            color: $color-white;
+        }
+
+        &--eggplant {
+            background-color: $color-eggplant;
+            color: $color-white;
+        }
+
+        &--silver-light {
+            background-color: $color-silver-light;
+        }
+
+        &--silver {
+            background-color: $color-silver;
+        }
+
+        &--silver-dark {
+            background-color: $color-silver-dark;
+        }
+
+        &--gray-light {
+            background-color: $color-gray-light;
+        }
+
+        &--gray {
+            background-color: $color-gray;
+        }
+
+        &--gray-dark {
+            background-color: $color-gray-dark;
+        }
+    }
+}

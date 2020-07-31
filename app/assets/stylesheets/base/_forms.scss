@@ -73,8 +73,7 @@ legend {
 
 label,
 legend {
-    display: block;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: $font-md-weight;
     margin-bottom: 6px;
 }
@@ -307,6 +306,10 @@ input[type='radio'] {
 .field {
     position: relative;
 
+    em {
+        float: right;
+    }
+
     &--checkbox {
         position: relative;
     }
@@ -457,239 +460,6 @@ input[type='radio'] {
     }
 }
 
-$size-label-size: 40px;
-
-.size-labels {
-    display: flex;
-    flex-wrap: wrap;
-
-    input[type='checkbox'] + label,
-    &__item {
-        border: $base-border-style $base-border-width $line-color;
-        cursor: pointer;
-        flex: 0 0 $size-label-size;
-        font-size: $small-font-size;
-        height: $size-label-size;
-        justify-content: center;
-        margin-right: -1px;
-        margin-bottom: -1px;
-        position: static;
-        text-align: center;
-        @include flex-center();
-
-        &::before {
-            display: none !important;
-        }
-
-        @include hover {
-            background-color: darken($color-white, 3%);
-        }
-
-        &--active {
-            background-color: $color-black;
-            border-color: $color-black;
-            color: $color-white;
-
-            @include hover {
-                background-color: $color-black;
-                border-color: $color-black;
-                color: $color-white;
-            }
-        }
-    }
-
-    input[type='checkbox']:checked {
-        + label {
-            background-color: $color-black;
-            border-color: $color-black;
-            color: $color-white;
-        }
-    }
-}
-
-$color-label-size: 20px;
-$color-label-margin: 7px;
-.color-labels {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.color-item {
-    input[type='checkbox'] {
-        display: none;
-        &:checked + label {
-            background-image: asset-url('icon-check-small.svg');
-            background-size: 8px auto;
-            background-repeat: no-repeat;
-            background-position: center;
-            transform: scale(1.15);
-        }
-
-        &:checked {
-            + label {
-                &.white,
-                &.offwhite,
-                &.cream {
-                    background-image: asset-url(
-                        'icon-check-small-b.svg'
-                    ); // use black icon for light colors
-                }
-            }
-        }
-    }
-
-    &__label,
-    input[type='checkbox'] + label {
-        @include flex-center();
-        background-color: $line-color;
-        border-radius: 100%;
-        cursor: pointer;
-        flex: 0 0 $color-label-size;
-        height: $color-label-size;
-        justify-content: center;
-        margin-right: $color-label-margin;
-        margin-bottom: $color-label-margin;
-        position: static;
-        text-align: center;
-        text-indent: -9999px;
-        width: $color-label-size;
-
-        &::before,
-        &::after {
-            display: none !important;
-        }
-
-        &.white {
-            border: $base-border-style $base-border-width $line-color;
-        }
-    }
-
-    input:checked ~ label {
-        background-image: asset-url('icon-check-small.svg');
-    }
-}
-
-.control {
-    display: block;
-    font-size: 1rem;
-    padding: $pv-lg;
-    border-style: none;
-    border-color: lighten($base-input-border-color, 10%);
-    background-color: darken($input-background-color, 2%);
-    // &:not(:last-child) {
-    //   margin-bottom: 4px; // Space each item, but remove margin from last item
-    // }
-    @include hover {
-        background-color: darken($input-background-color, 2%);
-    }
-    &__inner {
-        @include container();
-        @include flex-center();
-    }
-    &__icon {
-        max-width: 8em;
-        margin-right: 2em;
-    }
-    &__content {
-        display: flex;
-        align-items: center;
-        flex: 1 1 auto;
-        // justify-content: space-between;
-    }
-    &__text {
-        flex: 1 1 auto;
-        * {
-            margin: 6px 0;
-        }
-    }
-    &__chevron {
-        margin-left: auto;
-    }
-    &--addnew {
-        background-color: $input-background-color;
-        border-style: dashed;
-        justify-content: center;
-        text-align: center;
-        border-color: darken($base-input-border-color, 2%);
-        @include flex-center;
-        @include hover {
-            background-color: $input-background-color;
-            border-color: darken($base-input-border-color, 25%);
-        }
-    }
-}
-
-// Different styling for search inputs
-input.input--search {
-    background-color: $input-background-dark;
-    border-color: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 16px;
-    padding: 12px 1em;
-    padding-left: 3em;
-
-    @include breakpoint($bp-md) {
-        border-radius: 999px;
-    }
-
-    @include hover {
-    }
-
-    &:focus {
-        background-color: $color-white;
-        border-color: $base-input-border-color;
-    }
-
-    &::placeholder {
-        font-size: 1.6rem;
-    }
-
-    &.input--nofocus {
-        &:focus {
-            background-color: $input-background-dark;
-            border-color: transparent;
-            box-shadow: none;
-        }
-    }
-
-    // Styles for search in modal
-    &.input-modal-hdr {
-        @include pv(1.4em);
-        background: none;
-
-        @include breakpoint($bp-md) {
-            font-size: 16px;
-            font-weight: $font-md-weight;
-        }
-
-        &:focus {
-            background: none;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
-        &::placeholder {
-        }
-    }
-}
-
-.btn--search {
-    background: asset-url('icon-search.svg') no-repeat center;
-    background-size: 14px auto;
-    border: 0;
-    cursor: pointer;
-    height: 100%;
-    left: 0;
-    opacity: 0.7;
-    position: absolute !important;
-    top: 0;
-    width: 3em;
-    svg {
-        fill: $color-gray;
-    }
-}
-
 .input-with-button {
     display: flex;
     margin-bottom: 1rem;
@@ -723,4 +493,16 @@ input.input--search {
 .error-messages {
     color: $input-error-color;
     margin-bottom: $mv;
+}
+
+.actions {
+    margin-top: 2em;
+}
+
+.alert,
+.notice {
+    background-color: $color-butter;
+    border-radius: 10px;
+    padding: 1.5em 2em;
+    width: 100%;
 }
