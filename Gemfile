@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 # user management
 gem "devise"
 
+# React
+gem 'react-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
