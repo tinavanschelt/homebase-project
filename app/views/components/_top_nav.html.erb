@@ -1,5 +1,5 @@
 <div class="top-nav">
-  <% if controller_name != "sessions" %>
+  <% if controller_name != "sessions" && controller_name != "registrations" %>
     <div class="avatar"><%= image_tag image_url("icon-user.png"), alt: "Profile image" %></div>
   <% end %>
 

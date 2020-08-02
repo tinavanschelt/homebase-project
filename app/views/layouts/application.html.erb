@@ -21,9 +21,8 @@
     <% end %>
     
     <%= yield %>
-    <
-
-    <%if  controller_name != "sessions" %>
+    
+    <% if controller_name != "sessions" && controller_name != "registrations" %>
       <%= react_component("BottomNav") %>
     <% end %>
   </body>
