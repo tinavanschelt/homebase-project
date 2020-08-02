@@ -1,28 +1,71 @@
 .bottom-nav {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
     position: fixed;
     bottom: 0;
     width: 100%;
 
-    &__item {
-        align-items: center;
-        background-color: $color-clean;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        padding: 1em;
-        text-transform: uppercase;
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
 
-        img {
-            height: 24px;
-            margin-bottom: 0.5em;
-            width: auto;
+        &__item {
+            align-items: center;
+            background-color: $color-clean;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1em;
+            text-transform: uppercase;
+
+            img {
+                height: 24px;
+                margin-bottom: 0.5em;
+                width: auto;
+            }
+
+            &:hover {
+                background-color: darken($color-clean, 4%);
+            }
         }
+    }
 
-        &:hover {
-            background-color: darken($color-clean, 4%);
+    &__pop-up {
+        background-color: darken($color-clean, 8%);
+        width: 23%;
+        border-radius: $border-radius;
+        bottom: 77px;
+        position: absolute;
+        right: 1%;
+
+        &__item {
+            align-items: center;
+            display: flex;
+            padding: 1.5em;
+
+            &:first-child {
+                border-bottom: 1px solid darken($color-clean, 16%);
+                border-radius: $border-radius $border-radius 0 0;
+
+                &:hover {
+                    background-color: darken($color-clean, 12%);
+                }
+            }
+
+            &:last-child {
+                &:hover {
+                    background-color: darken($color-clean, 12%);
+                    border-radius: 0 0 $border-radius $border-radius;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            img {
+                margin-right: 0.5em;
+                width: 16px;
+            }
         }
     }
 }

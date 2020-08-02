@@ -46,10 +46,7 @@ $border-width-lg: $base-border-width * 2; // Pixels used to counter subpixel ren
 $border-width-sm: $base-border-width / 2; // Pixels used to counter subpixel rendering
 
 //- Border radius
-$base-border-radius: 2px;
-$border-radius-lg: 8px;
-$border-radius-rounded: 200px;
-$border-radius-sm: 4px;
+$border-radius: 5px;
 
 // Box shadow
 $base-box-shadow: 0 6px 12px 0 rgba($color-black, 0.15);
@@ -167,7 +164,7 @@ $heading-font-weight: 600;
 $link-hover-color: $action-color;
 
 //- Button
-$button-border-radius: $base-border-radius;
+$button-border-radius: $border-radius;
 $button-font-size: 1.5rem;
 $button-font-weight: 700;
 $button-letter-spacing: 0;

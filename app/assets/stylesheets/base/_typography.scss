@@ -120,12 +120,12 @@ a {
     background-color: transparent;
     color: $color-gray-dark;
     font-size: 1.4rem;
-    text-decoration: none;
     -webkit-text-decoration-skip: objects;
 
     @include hover {
+        color: $color-eggplant;
         outline-width: 0;
-        color: $color-salmon;
+        text-decoration: none;
     }
 
     &:active {

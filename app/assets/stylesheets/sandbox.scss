@@ -9,7 +9,7 @@
     margin: 2em 0;
 
     &__card {
-        border-radius: 5px;
+        border-radius: $border-radius;
         display: flex;
         justify-content: space-between;
         padding: 2em;
