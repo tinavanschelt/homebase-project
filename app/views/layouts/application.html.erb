@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <%= render "components/top_nav" %>
+  <% if controller_name != "sessions" && controller_name != "registrations" %>
+    <%= react_component("TopNav") %>
+  <% end %>
 
     <% if notice.present? %>
       <p class="notice"><%= notice %></p>

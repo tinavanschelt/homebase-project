@@ -1,0 +1,116 @@
+.top-nav {
+    background-color: $color-clean;
+    height: 50px;
+    padding: 1em;
+    width: 100%;
+
+    &__items {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        .avatar {
+            align-self: flex-start;
+            background-color: $color-white;
+            clip-path: circle(35px at center);
+
+            img {
+                width: 70px;
+            }
+        }
+
+        .logo {
+            height: 30px;
+        }
+
+        .menu {
+            cursor: pointer;
+            height: 20px;
+        }
+    }
+
+    .nav-pop-up {
+        top: 75px;
+    }
+}
+
+.bottom-nav {
+    font-size: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        &__item {
+            align-items: center;
+            background-color: $color-clean;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1em;
+            text-transform: uppercase;
+
+            img {
+                height: 24px;
+                margin-bottom: 0.5em;
+                width: auto;
+            }
+
+            &:hover {
+                background-color: darken($color-clean, 4%);
+            }
+        }
+    }
+
+    .nav-pop-up {
+        bottom: 75px;
+    }
+}
+
+.nav-pop-up {
+    background-color: darken($color-clean, 8%);
+    border-radius: $border-radius;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 1%;
+    width: 98%;
+
+    &__item {
+        align-items: center;
+        display: flex;
+        padding: 1.5em;
+
+        &:first-child {
+            border-bottom: 1px solid darken($color-clean, 16%);
+            border-radius: $border-radius $border-radius 0 0;
+
+            &:hover {
+                background-color: darken($color-clean, 12%);
+            }
+        }
+
+        &:last-child {
+            &:hover {
+                background-color: darken($color-clean, 12%);
+                border-radius: 0 0 $border-radius $border-radius;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        img {
+            margin-right: 0.5em;
+            width: 16px;
+        }
+    }
+
+    @include breakpoint($bp-md) {
+        weight: 23%;
+    }
+}

@@ -25,12 +25,12 @@ class BottomNav extends React.Component {
         return (
             <div className="bottom-nav">
                 {popupOpen && (
-                    <div className="bottom-nav__pop-up">
-                        <div className="bottom-nav__pop-up__item">
+                    <div className="nav-pop-up">
+                        <div className="nav-pop-up__item">
                             <img src={iconPlusInverted} alt="New Event" />
                             Create New Event
                         </div>
-                        <div className="bottom-nav__pop-up__item">
+                        <div className="nav-pop-up__item">
                             <img src={iconPlusInverted} alt="New Task" />
                             Create New Task
                         </div>
