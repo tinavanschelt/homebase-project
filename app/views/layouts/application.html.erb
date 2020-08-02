@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Homebase</title>
     <%= csrf_meta_tags %>
@@ -21,6 +21,10 @@
     <% end %>
     
     <%= yield %>
-    <%= react_component("BottomNav") %>
+    <
+
+    <%if  controller_name != "sessions" %>
+      <%= react_component("BottomNav") %>
+    <% end %>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <%= render layout: "containers/container", locals: { mod: "xs" } do %>
-  <div class="header-with-logo"><h2>Sign up</h2><%= image_tag image_url("homebase-logo.png"), class: "logo" %></div>
+  <div class="header-with-logo"><h2>Sign up</h2><%= image_tag image_url("homebase-logo.png"), class: "logo", alt: "Homebase logo" %></div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
