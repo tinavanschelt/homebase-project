@@ -87,7 +87,7 @@ select,
     appearance: none;
     background-color: $input-background-color;
     border: $input-border;
-    border-radius: $base-border-radius;
+    border-radius: $border-radius;
     // box-shadow: $subtle-box-shadow;
     color: $color-black;
     display: block;
@@ -195,7 +195,7 @@ input[type='checkbox'] {
         &::before {
             background-color: $input-background-color;
             border: $input-border;
-            border-radius: $base-border-radius;
+            border-radius: $border-radius;
             content: '';
             display: block;
             height: $input-checkbox-radio-size;
@@ -226,7 +226,7 @@ input[type='checkbox'] {
 input[type='radio'] {
     display: none;
     + label {
-        border-radius: $base-border-radius;
+        border-radius: $border-radius;
         cursor: pointer;
         font-size: $p-font-size;
         left: auto;
@@ -413,7 +413,7 @@ input[type='radio'] {
 
 .form-group__error-message {
     background-color: rgba($input-error-color, 0.06);
-    border-radius: $base-border-radius;
+    border-radius: $border-radius;
     color: $input-error-color;
     display: block;
     font-size: $p-font-size;
@@ -505,4 +505,15 @@ input[type='radio'] {
     border-radius: 10px;
     padding: 1.5em 2em;
     margin: 5em 2em 0;
+}
+
+#error_explanation {
+    background-color: $color-butter;
+    border-radius: $border-radius;
+    padding: 1.5em 1.5em 0.5em;
+    margin: 2em 0;
+
+    h2 {
+        font-size: 1.75rem;
+    }
 }

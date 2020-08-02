@@ -23,7 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # user management
-gem "devise"
+gem 'devise'
+gem 'strong_password', '~> 0.0.8'
 
 # React
 gem 'react-rails'
