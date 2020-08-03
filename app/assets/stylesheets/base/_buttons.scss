@@ -50,6 +50,14 @@
             color: $color-white;
         }
 
+        &.salmon {
+            background-color: $color-salmon;
+
+            @include hover {
+                background-color: darken($color-salmon, 4%);
+            }
+        }
+
         &.butter {
             background-color: $color-butter;
             color: $color-black;

@@ -1,0 +1,29 @@
+<%= render "components/page-title",
+    title: "Groups", 
+    actions: [{
+      label: "New Group",
+      href: new_group_path
+    }]
+  %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Group Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.title %></td>
+        <td><%= group.group_type %></td>
+        <td><%= link_to 'Show', group %></td>
+        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

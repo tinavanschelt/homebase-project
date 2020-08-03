@@ -518,3 +518,17 @@ input[type='radio'] {
         font-size: 1.75rem;
     }
 }
+
+.group-members-form {
+    .grid {
+        align-items: flex-end;
+    }
+
+    .field {
+        margin: 0;
+
+        @include breakpoint($bp-md) {
+            grid-column-end: span 3;
+        }
+    }
+}

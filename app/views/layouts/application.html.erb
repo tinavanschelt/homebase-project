@@ -22,7 +22,9 @@
       <p class="alert"><%= alert %></p>
     <% end %>
     
+    <%= render layout: "containers/container", locals: { mod: "md" } do %>
     <%= yield %>
+    <% end %>
     
     <% if controller_name != "sessions" && controller_name != "registrations" %>
       <%= react_component("BottomNav") %>

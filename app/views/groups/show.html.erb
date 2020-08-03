@@ -1,0 +1,15 @@
+<%= render "components/page-title",
+title: @group.title, 
+actions: [{
+  label: "Edit Group",
+  href: edit_group_path(@group)
+}]
+%>
+
+<%= react_component("AddGroupMembers", { 
+    groupId: @group.id,
+    userId: current_user.id, 
+    members: @members,
+    invitations: @invitations,
+  }) %>
+

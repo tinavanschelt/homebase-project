@@ -7,5 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :password, password_strength: true
+  validates :email, :presence => true, :uniqueness => true
+  
   enum role: [:normal, :guest, :admin]
 end
