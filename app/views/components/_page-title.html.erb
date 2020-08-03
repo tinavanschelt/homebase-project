@@ -1,0 +1,11 @@
+<div class="page-title">
+  <h1><%= title %></h1>
+
+  <% if defined? actions %>
+    <div class="page-title__actions button-group">
+      <% actions.each do |action| %>
+        <%= link_to action[:label], action[:href], class: "btn btn--primary page-title__action-btn button-group__item" %>
+      <% end %> 
+    </div>
+  <% end %>
+</div>

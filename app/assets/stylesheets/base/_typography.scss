@@ -143,6 +143,17 @@ b {
     font-weight: $font-semibold-weight;
 }
 
+.page-title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    h1 {
+        margin: 1em 0;
+    }
+}
+
 .header-with-logo {
     align-items: flex-end;
     display: flex;
