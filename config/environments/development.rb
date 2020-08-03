@@ -42,6 +42,7 @@ Rails.application.configure do
     :password             => "#{ENV['GMAIL_PASSWORD']}",
     :authentication       => "plain",
     :enable_starttls_auto => true
+  }
 
   config.action_mailer.perform_caching = false
 

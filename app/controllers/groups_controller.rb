@@ -30,11 +30,11 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        code = SecureRandom.hex(10)
+        @group.update(access_code: code)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
