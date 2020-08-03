@@ -7,10 +7,15 @@ class TopNav extends React.Component {
         super(props)
         this.state = { menuOpen: false }
         this.toggleNav = this.toggleNav.bind(this)
+        this.goToPage = this.goToPage.bind(this)
     }
 
     toggleNav() {
         this.setState({ menuOpen: !this.state.menuOpen })
+    }
+
+    goToPage(path) {
+        window.location = `${window.location.origin}/${path}`
     }
 
     render() {
@@ -32,8 +37,19 @@ class TopNav extends React.Component {
                 </div>
                 {menuOpen && (
                     <div className="nav-pop-up">
-                        <div className="nav-pop-up__item">Groups</div>
-                        <div className="nav-pop-up__item">Logout</div>
+                        <div
+                            className="nav-pop-up__item"
+                            onClick={() => this.goToPage('groups')}
+                        >
+                            Groups
+                        </div>
+                        <a
+                            className="nav-pop-up__item"
+                            href="/users/sign_out"
+                            data-method="delete"
+                        >
+                            Logout
+                        </a>
                     </div>
                 )}
             </div>
