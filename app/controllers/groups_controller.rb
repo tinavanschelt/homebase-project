@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        code = SecureRandom.hex(10)
+        code = SecureRandom.hex(6)
         @group.update(access_code: code)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
       else

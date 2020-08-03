@@ -73,7 +73,10 @@ class AddGroupMembers extends React.Component {
                 <div className="box-with-border">
                     {invitations && invitations.length == 0 ? (
                         <Fragment>
-                            This groups does not have any invites yet.
+                            This groups does not have any invites yet. <br />
+                            Click on "Add Group Members" <i>or</i> share the
+                            sign-up link, [add link],with the people you would
+                            like to add to the group.
                         </Fragment>
                     ) : (
                         <Fragment>
