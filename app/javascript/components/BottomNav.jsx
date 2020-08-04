@@ -37,10 +37,10 @@ class BottomNav extends React.Component {
                     </div>
                 )}
                 <div className="bottom-nav__items">
-                    <span className="bottom-nav__items__item">
+                    <a href="/" className="bottom-nav__items__item">
                         <img src={iconFlag} alt="Home" />
                         Home
-                    </span>
+                    </a>
                     <span className="bottom-nav__items__item">
                         <img src={iconSmile} alt="My Stuff" />
                         My Stuff

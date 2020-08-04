@@ -27,7 +27,9 @@ class TopNav extends React.Component {
                     <div className="avatar">
                         <img alt="Profile image" src={iconUser} />
                     </div>
-                    <img className="logo" alt="Homebase logo" src={logo} />
+                    <a href="/">
+                        <img className="logo" alt="Homebase logo" src={logo} />
+                    </a>
                     <img
                         className="menu"
                         alt="Menu"

@@ -7,6 +7,7 @@
     &__items {
         align-items: center;
         display: flex;
+        height: 100%;
         justify-content: space-between;
 
         .avatar {
@@ -43,6 +44,12 @@
     &__items {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+
+        a {
+            color: $color-black;
+            font-size: 1rem;
+            text-decoration: none;
+        }
 
         &__item {
             align-items: center;
