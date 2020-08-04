@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_invitation, only: [:edit, :update, :destroy]
 
   # GET /invitations/1
@@ -22,9 +23,9 @@ class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new(invitation_params)
 
-    if @invitation.save!
+    if @invitation.save
       InvitationMailer.invite_member(@invitation)
-      render json: { email: @invitation.email, status: :ok }
+      render json: { email: @invitation.email, id: @invitation.id, status: :ok }
     else
       render json: { errors: @invitation.errors, status: :unprocessable_entity }
     end
@@ -47,10 +48,9 @@ class InvitationsController < ApplicationController
   # DELETE /invitations/1
   # DELETE /invitations/1.json
   def destroy
-    @invitation.destroy
-    respond_to do |format|
-      format.html { redirect_to invitations_url, notice: 'Invitation was successfully destroyed.' }
-      format.json { head :no_content }
+    email = @invitation.email
+    if @invitation.destroy
+      render json: { email: @invitation.email, id: @invitation.id }
     end
   end
 

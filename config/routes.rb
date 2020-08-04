@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :groups
   resources :group_members, only: [:create, :update]
-  resources :invitations, only: [:create, :show, :update]
+  resources :invitations
 
   get "/sandbox", to: "sandbox#index"
 end

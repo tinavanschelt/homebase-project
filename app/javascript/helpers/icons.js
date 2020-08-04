@@ -1,5 +1,6 @@
 import logo from '../../assets/images/homebase-logo.png'
 import iconUser from '../../assets/images/icon-user.png'
+import iconX from '../../assets/images/icon-x.png'
 import iconFlag from '../../assets/images/icon-flag.png'
 import iconSmile from '../../assets/images/icon-smile.png'
 import iconCalendar from '../../assets/images/icon-calendar.png'
@@ -10,6 +11,7 @@ import iconMenu from '../../assets/images/icon-menu.png'
 export {
     logo,
     iconUser,
+    iconX,
     iconFlag,
     iconSmile,
     iconCalendar,

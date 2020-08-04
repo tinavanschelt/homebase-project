@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
-import { logo, iconUser, iconMenu } from '../helpers/icons'
+import { iconX } from '../helpers/icons'
 
 class AddGroupMembers extends React.Component {
     constructor(props) {
@@ -14,6 +14,7 @@ class AddGroupMembers extends React.Component {
         this.toggleFields = this.toggleFields.bind(this)
         this.handleFieldChange = this.handleFieldChange.bind(this)
         this.addNewMember = this.addNewMember.bind(this)
+        this.deleteInvite = this.deleteInvite.bind(this)
     }
 
     toggleFields() {
@@ -38,7 +39,30 @@ class AddGroupMembers extends React.Component {
             .then(({ data }) => {
                 const { invitations } = this.state
                 this.setState({
-                    invitations: [...invitations, ...[data.email]],
+                    invitations: [
+                        ...invitations,
+                        ...[{ email: data.email, id: data.ie }],
+                    ],
+                    email: '',
+                })
+            })
+            .catch(res => {
+                console.log(res)
+            })
+    }
+
+    deleteInvite(id) {
+        axios
+            .delete(`/invitations/${id}`, {
+                authenticity_token: this.csrfToken,
+            })
+            .then(({ data }) => {
+                const { invitations } = this.state
+                const updatedInvitations = invitations.filter(
+                    invite => invite.id != id
+                )
+                this.setState({
+                    invitations: updatedInvitations,
                     email: '',
                 })
             })
@@ -84,8 +108,23 @@ class AddGroupMembers extends React.Component {
                         </Fragment>
                     ) : (
                         <Fragment>
-                            {invitations.map(email => (
-                                <div>{email}</div>
+                            {invitations.map(invite => (
+                                <div className="list-item">
+                                    {invite.email}
+                                    <a
+                                        onClick={() =>
+                                            this.deleteInvite(invite.id)
+                                        }
+                                        // href={`/invitations/${invite.id}`}
+                                        // data-method="delete"
+                                    >
+                                        <img
+                                            src={iconX}
+                                            alt="delete"
+                                            className="list-item__delete"
+                                        />
+                                    </a>
+                                </div>
                             ))}
                         </Fragment>
                     )}

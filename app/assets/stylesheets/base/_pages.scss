@@ -4,3 +4,15 @@
     margin-bottom: 1em;
     padding: 2em;
 }
+
+.list-item {
+    align-items: center;
+    display: flex;
+    margin: 0.5em 0;
+
+    &__delete {
+        cursor: pointer;
+        margin-left: 1em;
+        width: 10px;
+    }
+}
