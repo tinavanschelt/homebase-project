@@ -41,8 +41,7 @@ RSpec.describe "the user sign up process", type: :feature do
   context "valid data" do
     it "creates a user and signs in" do
       visit "/users/sign_up"
-  
-      do_user_sign_up(strong_password)
+      do_user_sign_up
   
       expect(page).to have_content "Welcome! You have signed up successfully."
       expect(page).to have_current_path root_path

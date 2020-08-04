@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe "the user sign in process", type: :feature do
   let(:user) { create(:user) }
-  let(:strong_password) { "@n3spR3sS0x" }
 
   context "renders form as expected" do
     it "has all fields, fields are correct type" do
@@ -39,7 +38,7 @@ RSpec.describe "the user sign in process", type: :feature do
       expect(page).to have_content "Invalid Email or password."
       
       within("#new_user") do
-        fill_in "user_password", with: strong_password
+        fill_in "user_password", with: "@n3spR3sS0x"
       end
       click_button "Log in"
 
@@ -50,9 +49,9 @@ RSpec.describe "the user sign in process", type: :feature do
   context "valid data" do
     it "creates a user and signs in" do
       visit "/users/sign_up"
-      do_user_sign_up(strong_password)
+      do_user_sign_up
       click_link "Sign Out"
-      do_user_sign_in(strong_password)
+      do_user_sign_in
   
       expect(page).to have_content "Signed in successfully."
       expect(page).to have_current_path root_path

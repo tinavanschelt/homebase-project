@@ -1,0 +1,15 @@
+admin:
+    first_name: John
+    last_name: Beecham
+    email: john@beecham.com
+    created_at: <%= 1.days.ago %>
+    role: 2
+    dob: 1995-01-18
+
+normal:
+    first_name: Anna
+    last_name: Beecham
+    email: anna@beecham.com
+    created_at: <%= 1.days.ago %>
+    role: 0
+    dob: 2000-02-18

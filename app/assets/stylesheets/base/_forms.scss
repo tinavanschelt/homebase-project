@@ -150,8 +150,8 @@ progress {
 }
 
 select {
-    background: asset-url('icon-arrow-down.svg') calc(100% - #{$ph}) 50%
-        no-repeat $input-background-color;
+    // background: asset-url('icon-arrow-down.svg') calc(100% - #{$ph}) 50%
+    //     no-repeat $input-background-color;
     background-size: auto 10%;
     box-shadow: $subtle-box-shadow;
     line-height: 1.3;

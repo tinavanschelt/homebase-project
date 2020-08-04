@@ -49,9 +49,9 @@ class AddGroupMembers extends React.Component {
 
     render() {
         const { fieldsVisible, email, invitations } = this.state
-        const { members } = this.props
+        const { members, groupCode } = this.props
 
-        console.log(invitations)
+        const inviteUrl = `${window.location.origin}/invitations/${groupCode}`
 
         return (
             <div className="group-members-form">
@@ -59,7 +59,7 @@ class AddGroupMembers extends React.Component {
                 <div className="box-with-border">
                     {members && members.length == 0 ? (
                         <Fragment>
-                            This groups does not have any members yet.
+                            This group does not have any members yet.
                         </Fragment>
                     ) : (
                         <Fragment>
@@ -73,10 +73,14 @@ class AddGroupMembers extends React.Component {
                 <div className="box-with-border">
                     {invitations && invitations.length == 0 ? (
                         <Fragment>
-                            This groups does not have any invites yet. <br />
+                            This group does not have any invitees yet. <br />
                             Click on "Add Group Members" <i>or</i> share the
-                            sign-up link, [add link],with the people you would
-                            like to add to the group.
+                            sign-up link,{' '}
+                            <a href={inviteUrl} target="_blank">
+                                {inviteUrl}
+                            </a>
+                            , with the people you would like to add to the
+                            group.
                         </Fragment>
                     ) : (
                         <Fragment>
@@ -129,6 +133,7 @@ AddGroupMembers.propTypes = {
     members: PropTypes.array.isRequired,
     invitations: PropTypes.array.isRequired,
     userId: PropTypes.number.isRequired,
+    groupCode: PropTypes.string.isRequired,
 }
 
 export default AddGroupMembers

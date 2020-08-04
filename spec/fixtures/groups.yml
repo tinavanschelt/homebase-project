@@ -1,0 +1,5 @@
+beecham:
+    title: The Beechams
+    group_type: 0
+    created_at: <%= 1.days.ago %>
+    access_code: 'b33chAm5'

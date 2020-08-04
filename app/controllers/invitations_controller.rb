@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :set_invitation, only: [:show, :edit, :update, :destroy]
+  before_action :set_invitation, only: [:edit, :update, :destroy]
 
   # GET /invitations/1
   # GET /invitations/1.json

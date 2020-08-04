@@ -33,6 +33,7 @@ class GroupsController < ApplicationController
       if @group.save
         code = SecureRandom.hex(6)
         @group.update(access_code: code)
+        @group.add_member(current_user)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
       else
         format.html { render :new }
