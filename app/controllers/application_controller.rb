@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
       last_name
       dob
       role
+      access_code
     ]
 
     devise_parameter_sanitizer.permit(:sign_up, keys: keys)

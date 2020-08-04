@@ -1,15 +1,11 @@
 class InvitationsController < ApplicationController
   before_action :set_invitation, only: [:show, :edit, :update, :destroy]
 
-  # GET /invitations
-  # GET /invitations.json
-  def index
-    @invitations = Invitation.all
-  end
-
   # GET /invitations/1
   # GET /invitations/1.json
   def show
+    return redirect_to new_user_registration_path(code: params[:id]) if params[:id].present?
+    redirect_to root_path
   end
 
   # GET /invitations/new

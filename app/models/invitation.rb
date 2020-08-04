@@ -6,4 +6,8 @@ class Invitation < ApplicationRecord
   validates_uniqueness_of :email, :scope => [:group_id]
 
   scope :unaccepted, -> { where(accepted: false) }
+
+  def accept
+    update_attribute(:accepted, true)
+  end
 end
