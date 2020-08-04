@@ -8,6 +8,16 @@
     align-items: flex-start;
 }
 
+@mixin ph($size) {
+    padding-left: $size;
+    padding-right: $size;
+}
+
+@mixin pv($size) {
+    padding-bottom: $size;
+    padding-top: $size;
+}
+
 @mixin breakpoint($point) {
     @media (min-width: $point) {
         @content;
