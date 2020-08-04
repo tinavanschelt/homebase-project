@@ -30,10 +30,6 @@ $translate-value: 10%; // How much we want to move the questionnaire content
 $html-font-size: 59.375%;
 $html-font-size-lg: 62.5%;
 
-//- Background colors
-$base-background-color: $color-white;
-$light-background-color: $color-silver-light;
-
 //- Border
 $line-color: $color-silver;
 $line-color-light: $color-silver-light;
@@ -42,8 +38,6 @@ $base-border-color: $color-silver;
 $base-border-style: solid;
 $base-border-width: 1px; // Pixels used to counter subpixel rendering
 $base-border: $base-border-style $base-border-width $base-border-color;
-$border-width-lg: $base-border-width * 2; // Pixels used to counter subpixel rendering
-$border-width-sm: $base-border-width / 2; // Pixels used to counter subpixel rendering
 
 //- Border radius
 $border-radius: 5px;
@@ -51,7 +45,6 @@ $border-radius: 5px;
 // Box shadow
 $base-box-shadow: 0 6px 12px 0 rgba($color-black, 0.15);
 $subtle-box-shadow: 1px 2px 4px rgba($color-black, 0.03);
-$button-hover-box-shadow: 0 2px 8px rgba($color-black, 0.2);
 
 //- Breakpoints
 $bp-xs: 24em; // 384px
@@ -65,8 +58,6 @@ $bp-xxl: 120em; // 1920px
 $base-font-color: $color-gray;
 $heading-font-color: $color-black;
 $action-color: $color-clean;
-$highlight-color: $color-eggplant;
-$alert-color: $color-salmon;
 
 //- Font families
 $font-titles: 'Avant Garde Bold', 'Standard CT Bold Cond', 'Akzidenz-Grotesk BQ',
@@ -84,7 +75,6 @@ $large-font-size: 1.4rem;
 $p-font-size: 1.3rem;
 $small-font-size: 1.2rem;
 $xs-font-size: 1.1rem;
-$xxs-font-size: 1rem;
 
 $font-bold-weight: 700;
 $font-semibold-weight: 600;
@@ -96,9 +86,6 @@ $container: 118rem;
 $container-lg: 132rem;
 $container-md: 78rem;
 $container-sm: 56rem;
-$overlay-bg: darken($color-black, 5%);
-$overlay-opacity: 0.5;
-$page-action-margin-bottom: 0.5em;
 $container-pad: 2rem;
 $container-pad-sm: 1rem;
 $container-pad-lg: 4rem;
@@ -161,8 +148,6 @@ $z-header: 5;
 //- Typography
 $base-font-family: $font-base;
 $heading-font-family: $font-titles;
-$heading-font-weight: 600;
-$link-hover-color: $action-color;
 
 //- Button
 $button-border-radius: $border-radius;
@@ -178,99 +163,11 @@ $button-text-transform: none;
 $button-small-padding: 1em 1em;
 $button-small-font-size: 1.1rem;
 
-//- Button Group
-$button-group-horizontal-margin: $mh-xs;
-$button-group-vertical-margin: $mv;
-
-//- Alert
-$alert-close-size: 1em;
-$alert-max-height: 16em;
-$alert-padding: $pv;
-
-//- Footer
-$footer-padding: 10rem;
-$footer-padding-sm: 3.5rem;
-
-//- Footer Copyright
-$footer-copyright-font-size: 1rem;
-
-//- Masthead
-$masthead-bg-color: $color-white;
-$masthead-color: $color-black;
-$masthead-padding: $pv 0;
-$masthead-height: 7rem;
-
-//- Tabs
-$tabs-active-color: $heading-font-color;
-$tabs-color: $color-gray-dark;
-
-//- Tags
-$tag-close-size: 8px;
-
-//- Notice
-$notice-default-bg-color: $action-color;
-$notice-default-text-color: $color-white;
-$notice-success-bg-color: $color-success;
-$notice-success-text-color: $color-white;
-$notice-error-bg-color: darken($color-error, 8%);
-$notice-error-text-color: $color-white;
-$notice-warning-bg-color: darken($color-error, 8%);
-$notice-warning-text-color: $color-white;
-
-//- Nav
-$nav-bg-color: $color-white;
-$nav-bp: $bp-md;
-$nav-fullscreen-height: calc(
-    100vh - #{$masthead-height}
-); // Applied from masthead.scss
-
-//- Modal
-$modal-text-align: left;
-
-//- Modal Animation
-$modal-animation-duration: 250ms;
-$modal-animation-fill-node: forwards;
-
-//- Modal Backdrop
-$modal-backdrop-animation: fade-in;
-$modal-backdrop-bg: $overlay-bg;
-$modal-backdrop-opacity: $overlay-opacity;
-
-//- Modal Close
-$modal-close-size: 1.5rem;
-
-//- Modal Content
-$modal-content-animation: fade-in-zoom;
-$modal-content-animation-timing: $elastic-timing;
-$modal-content-bg: $color-white;
-$modal-content-max-width: 78rem;
-$modal-content-max-width-lg: 86rem;
-$modal-padding: $pv-lg;
-$modal-padding-lg: 3.5rem;
-
-//- Modal Footer
-$modal-footer-bg: $color-white;
-
 //- Size select
 $size-select-bg: $color-white;
 
-//- Form Group
-$form-group-bg: transparent;
-
-//- Cards
-$card-padding: $container-pad;
-$card-border: $base-border-style $base-border-width $line-color;
-$ui-outside-border: $base-border-style $base-border-width $line-color;
-$ui-row-border: 1px dotted darken($line-color, 10%);
-
-//- Row
-$product-row-horizontal-margin: 4px;
-$row-pad: 3.5rem;
-$row-pad-lg: 4rem;
-
 //- Forms
 $input-background-color: $color-white;
-$input-background-dark: #f7f7f7;
 $input-border: $base-border-style $base-border-width $base-input-border-color;
 $input-placeholder-color: lighten($color-gray-light, 20%);
 $input-error-color: $color-error;
