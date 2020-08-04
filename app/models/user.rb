@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   validates :password, password_strength: true
   validates :email, :presence => true, :uniqueness => true
+  validates :first_name, :last_name, presence: true
   
   attr_accessor :access_code
   enum role: [:normal, :guest, :admin]

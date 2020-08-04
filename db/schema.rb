@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_213812) do
+ActiveRecord::Schema.define(version: 2020_08_04_141426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,19 +24,19 @@ ActiveRecord::Schema.define(version: 2020_08_03_213812) do
 
   create_table "groups", force: :cascade do |t|
     t.string "title"
-    t.integer "group_type"
+    t.string "group_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "access_code"
   end
 
-  create_table "invitations", id: :bigint, default: -> { "nextval('invitations_tables_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "invitations", force: :cascade do |t|
     t.integer "group_id", null: false
+    t.integer "user_id", null: false
     t.string "email", null: false
     t.boolean "accepted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_213812) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.datetime "dob"
-    t.integer "role"
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
