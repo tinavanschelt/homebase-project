@@ -6,7 +6,11 @@ import { iconX } from '../helpers/icons'
 class AddGroupMembers extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { fieldsVisible: false, invitations: props.invitations }
+        this.state = {
+            fieldsVisible: false,
+            members: props.members,
+            invitations: props.invitations,
+        }
 
         const csrfToken = document.getElementsByName('csrf-token')[0]
         this.csrfToken = csrfToken ? csrfToken.content : ''
@@ -14,6 +18,7 @@ class AddGroupMembers extends React.Component {
         this.toggleFields = this.toggleFields.bind(this)
         this.handleFieldChange = this.handleFieldChange.bind(this)
         this.addNewMember = this.addNewMember.bind(this)
+        this.toggleMemberStatus = this.toggleMemberStatus.bind(this)
         this.deleteInvite = this.deleteInvite.bind(this)
     }
 
@@ -24,6 +29,54 @@ class AddGroupMembers extends React.Component {
     handleFieldChange(e) {
         const { target } = e
         this.setState({ [target.id]: target.value })
+    }
+
+    toggleMemberStatus(id, active) {
+        const { groupId } = this.props
+
+        axios
+            .put(`/toggle_member_status`, {
+                authenticity_token: this.csrfToken,
+                active: active,
+                user_id: id,
+                group_id: groupId,
+            })
+            .then(({ data }) => {
+                const { members } = this.state
+                const memberIndex = members.findIndex(m => m.id == id)
+                const updatedMembers = members
+                updatedMembers[memberIndex].active = active
+
+                this.setState({
+                    members: updatedMembers,
+                })
+            })
+            .catch(res => {
+                console.log(res)
+            })
+    }
+
+    deactivateMember() {
+        axios
+            .post(`/group_members/`, {
+                authenticity_token: this.csrfToken,
+                email: this.state.email,
+                user_id: userId,
+                group_id: groupId,
+            })
+            .then(({ data }) => {
+                const { invitations } = this.state
+                this.setState({
+                    invitations: [
+                        ...invitations,
+                        ...[{ email: data.email, id: data.id }],
+                    ],
+                    email: '',
+                })
+            })
+            .catch(res => {
+                console.log(res)
+            })
     }
 
     addNewMember() {
@@ -41,7 +94,7 @@ class AddGroupMembers extends React.Component {
                 this.setState({
                     invitations: [
                         ...invitations,
-                        ...[{ email: data.email, id: data.ie }],
+                        ...[{ email: data.email, id: data.id }],
                     ],
                     email: '',
                 })
@@ -72,9 +125,8 @@ class AddGroupMembers extends React.Component {
     }
 
     render() {
-        const { fieldsVisible, email, invitations } = this.state
-        const { members, groupCode } = this.props
-
+        const { fieldsVisible, email, invitations, members } = this.state
+        const { groupCode } = this.props
         const inviteUrl = `${window.location.origin}/invitations/${groupCode}`
 
         return (
@@ -87,8 +139,33 @@ class AddGroupMembers extends React.Component {
                         </Fragment>
                     ) : (
                         <Fragment>
-                            {members.map(email => (
-                                <div>{email}</div>
+                            {members.map(member => (
+                                <div className="list-item">
+                                    <span>{member.email}</span>
+                                    {member.active ? (
+                                        <a
+                                            onClick={() =>
+                                                this.toggleMemberStatus(
+                                                    member.id,
+                                                    false
+                                                )
+                                            }
+                                        >
+                                            Deactivate
+                                        </a>
+                                    ) : (
+                                        <a
+                                            onClick={() =>
+                                                this.toggleMemberStatus(
+                                                    member.id,
+                                                    true
+                                                )
+                                            }
+                                        >
+                                            Activate
+                                        </a>
+                                    )}
+                                </div>
                             ))}
                         </Fragment>
                     )}
@@ -110,20 +187,18 @@ class AddGroupMembers extends React.Component {
                         <Fragment>
                             {invitations.map(invite => (
                                 <div className="list-item">
-                                    {invite.email}
-                                    <a
+                                    <span>{invite.email}</span>
+                                    <div
                                         onClick={() =>
                                             this.deleteInvite(invite.id)
                                         }
-                                        // href={`/invitations/${invite.id}`}
-                                        // data-method="delete"
                                     >
                                         <img
                                             src={iconX}
                                             alt="delete"
                                             className="list-item__delete"
                                         />
-                                    </a>
+                                    </div>
                                 </div>
                             ))}
                         </Fragment>

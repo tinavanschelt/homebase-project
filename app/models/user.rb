@@ -12,4 +12,10 @@ class User < ApplicationRecord
   
   attr_accessor :access_code
   enum role: [:normal, :guest, :admin]
+
+  def admin_groups
+    group_ids = group_members.where(role: 0).map(&:group_id)
+    return Group.find(group_ids) if group_ids.present?
+    nil
+  end
 end

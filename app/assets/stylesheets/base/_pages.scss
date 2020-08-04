@@ -10,9 +10,17 @@
     display: flex;
     margin: 0.5em 0;
 
+    span {
+        margin-right: 1em;
+    }
+
+    a {
+        cursor: pointer;
+        margin-right: 0.5em;
+    }
+
     &__delete {
         cursor: pointer;
-        margin-left: 1em;
         width: 10px;
     }
 }

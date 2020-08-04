@@ -5,14 +5,22 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    if current_user.admin? 
+      @groups = Group.all
+    else
+      @groups = current_user.groups
+    end
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @members = @group.users.map(&:email) || []
-    @invitations = @group.invitations.unaccepted
+    if @group.admin?(current_user)
+      @members = @group.users || []
+      @invitations = @group.invitations.unaccepted || []
+    else
+      redirect_to groups_path
+    end
   end
 
   # GET /groups/new
@@ -33,7 +41,7 @@ class GroupsController < ApplicationController
       if @group.save
         code = SecureRandom.hex(6)
         @group.update(access_code: code)
-        @group.add_member(current_user)
+        @group.add_admin(current_user)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
       else
         format.html { render :new }
