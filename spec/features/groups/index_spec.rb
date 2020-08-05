@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "the user sign in process", type: :feature do
+RSpec.describe "create and manage groups", type: :feature do
   let!(:user) { users(:admin) }
 
   context "create new group" do
