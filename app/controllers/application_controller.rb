@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path
   end
 
+  def current_group
+    current_user.primary_group
+  end
+  helper_method :current_group
+
   protected
 
   def configure_permitted_parameters

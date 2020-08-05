@@ -56,29 +56,6 @@ class AddGroupMembers extends React.Component {
             })
     }
 
-    deactivateMember() {
-        axios
-            .post(`/group_members/`, {
-                authenticity_token: this.csrfToken,
-                email: this.state.email,
-                user_id: userId,
-                group_id: groupId,
-            })
-            .then(({ data }) => {
-                const { invitations } = this.state
-                this.setState({
-                    invitations: [
-                        ...invitations,
-                        ...[{ email: data.email, id: data.id }],
-                    ],
-                    email: '',
-                })
-            })
-            .catch(res => {
-                console.log(res)
-            })
-    }
-
     addNewMember() {
         const { userId, groupId } = this.props
 

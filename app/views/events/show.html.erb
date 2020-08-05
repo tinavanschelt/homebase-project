@@ -1,44 +1,31 @@
-<p id="notice"><%= notice %></p>
+<h3>Event</h3>
+<h1><%= @event.title %></h1>
+
+<p><%= @event.description %></p>
 
 <p>
   <strong>Organiser:</strong>
-  <%= @event.organiser_id %>
+  <%= @event.user.full_name %>
 </p>
 
 <p>
   <strong>Date:</strong>
-  <%= @event.date %>
+  <%= @event.start_time.strftime("%d %B %Y") %>
 </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<% if @event.all_day %>
+  <div class="tag">All day event</div>
+<% else %>
+  <p>
+    <strong>Time:</strong>
+    <%= @event.start_time.strftime("%H:%M") %> - 
+    <%= @event.end_time.strftime("%H:%M") %> 
+  </p>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @event.end_time %>
-</p>
-
-<p>
-  <strong>All day:</strong>
-  <%= @event.all_day %>
-</p>
-
-<p>
-  <strong>Restricted:</strong>
-  <%= @event.restricted %>
-</p>
+<% if @event.restricted %><p>
+  <p>This is a private event.</p>
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

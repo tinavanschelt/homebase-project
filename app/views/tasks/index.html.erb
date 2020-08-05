@@ -1,41 +1,18 @@
-<p id="notice"><%= notice %></p>
 
+<% if @groups.length > 0 %>
+  <h3>[<%= @group.title %>]</h3>
+<% end %>
 <h1>Tasks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Creator</th>
-      <th>Assigned to</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Due at</th>
-      <th>Completed at</th>
-      <th>Completed by</th>
-      <th>Restricted</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.creator_id %></td>
-        <td><%= task.assigned_to %></td>
-        <td><%= task.title %></td>
-        <td><%= task.description %></td>
-        <td><%= task.due_at %></td>
-        <td><%= task.completed_at %></td>
-        <td><%= task.completed_by %></td>
-        <td><%= task.restricted %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="box-with-border">
+  <% @tasks.each do |t| %>
+    <%= react_component("TaskItem", {
+      id: t.id,
+      title: t.title,
+      due: t.due_at.strftime("%d %B %Y"),
+      completed: t.completed || false
+    }) %>
+  <% end %>
+</div>
 
 <%= link_to 'New Task', new_task_path %>

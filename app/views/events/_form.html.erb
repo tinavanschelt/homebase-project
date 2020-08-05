@@ -11,14 +11,8 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :organiser_id, value: current_user.id %>
-
-  <div class="field field--datetime">
-    <%= form.label :date %>
-    <div class="field--datetime__inner">
-      <%= form.datetime_select :date %>
-    </div>
-  </div>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :group_id, value: current_group.id %>
 
   <div class="field">
     <%= form.label :title %>
@@ -51,7 +45,7 @@
 
   <%= form.label :restricted, class: "field field--checkbox" do %>
     <%= form.check_box :restricted %>
-    Restricted event
+    Private event
   <% end %>
 
   <div class="actions">

@@ -16,7 +16,11 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     if @group.admin?(current_user)
-      @members = @group.users || []
+      if @group.group_members.length > 0
+        @members = @group.group_members.map { |m| { id: m.user_id, active: m.active, email: m.user.email }}
+      else
+        @members = []
+      end
       @invitations = @group.invitations.unaccepted || []
     else
       redirect_to groups_path

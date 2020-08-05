@@ -1,41 +1,16 @@
-<p id="notice"><%= notice %></p>
-
+<% if @groups.length > 0 %>
+  <h3>[<%= @group.title %>]</h3>
+<% end %>
 <h1>Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Organiser</th>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>All day</th>
-      <th>Restricted</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.organiser_id %></td>
-        <td><%= event.date %></td>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <td><%= event.all_day %></td>
-        <td><%= event.restricted %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="box-with-border">
+  <% @events.each do |e| %>
+    <div class="list-item">
+      <a href="/events/<%= e.id %>" class="list-item">
+        <%= e.title %> (<%= e.start_time.strftime("%d %B %Y") %>)
+      </a>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to 'New Event', new_event_path %>

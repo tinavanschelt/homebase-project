@@ -3,13 +3,11 @@
   <h3>[<%= @group.title %>]</h3>
 <% end %>
 
-<div class="section section--dashboard">
-  <a href="/events"><h4 class="section__title">Events</h4></a>
+<div class="section">
+  <h4 class="section__title">Events</h4>
   <% if @events.present? && @events.length > 0 %>
     <% @events.each do |e| %>
-      <a href="/events/<%= e.id %>" class="list-item">
-        <%= e.title %> (<%= e.start_time.strftime("%d %B %Y") %>)
-      </a>
+      <p><%= e.title %> (<%= e.start_time.strftime("%d %B %Y") %>)</p>
     <% end %>
   <% else %>
     This group does not have any events
@@ -17,16 +15,11 @@
   <%= link_to "Create New Event", new_event_path %>
 </div>
 
-<div class="section section--dashboard">
-  <a href="/tasks"><h4 class="section__title">Tasks</h4></a>
+<div class="section">
+  <h4 class="section__title">Tasks</h4>
   <% if @tasks.present? && @tasks.length > 0 %>
-    <% @tasks.each do |t| %>
-      <%= react_component("TaskItem", {
-        id: t.id,
-        title: t.title,
-        due: t.due_at.strftime("%d %B %Y"),
-        completed: t.completed || false
-      }) %>
+    <% @tasks.each do |e| %>
+      <p><%= e.title %> (<%= e.due_at.strftime("%d %B %Y") %>)</p>
     <% end %>
   <% else %>
     This group does not have any tasks
@@ -36,7 +29,7 @@
 
 <div class="box-with-border">
   <p>
-    <h5>Birthdays 🎈</h5>
+    <b>Birthdays 🎈</b><br/>
     No upcoming birthdays
   </p>
 </div>

@@ -3,8 +3,10 @@ class PagesController < ApplicationController
   
   def dashboard
     @groups = current_user.groups
-    @group = @groups.length > 0 ? current_user.groups.first : nil
-    @events = @group.events
-    @tasks = @group.tasks
+    @group = @groups.length > 0 ? current_user.primary_group : nil
+    if @group.present?
+      @events = @group.events.order(start_time: :desc)[0...5]
+      @tasks = @group.tasks.order(due_at: :desc)[0...5]
+    end
   end
 end

@@ -1,19 +1,26 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:index, :show, :new]
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    if @group.present?
+      @events = @group.events
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    redirect_to root_path if @group.nil?
   end
 
   # GET /events/new
   def new
+    redirect_to root_path if @group.nil?
     @event = Event.new
   end
 
@@ -67,8 +74,18 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
+    def set_group
+      @groups = current_user.groups
+
+      if @groups.length > 0
+        @group = current_user.primary_group
+      else
+        @group = nil
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:organiser_id, :date, :title, :description, :start_time, :end_time, :all_day, :restricted)
+      params.require(:event).permit(:user_id, :group_id, :date, :title, :description, :start_time, :end_time, :all_day, :restricted)
     end
 end
