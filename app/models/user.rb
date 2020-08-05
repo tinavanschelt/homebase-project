@@ -14,9 +14,17 @@ class User < ApplicationRecord
   attr_accessor :access_code
   enum role: [:normal, :guest, :admin]
 
+  def primary_group
+    groups.first
+  end
+
   def admin_groups
     group_ids = group_members.where(role: 0).map(&:group_id)
     return Group.find(group_ids) if group_ids.present?
     nil
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
