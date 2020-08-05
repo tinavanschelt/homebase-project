@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { logo, iconUser, iconMenu } from '../helpers/icons'
+import { logo, prof, iconMenu } from '../helpers/icons'
 
 class TopNav extends React.Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class TopNav extends React.Component {
             <div className="top-nav">
                 <div className="top-nav__items">
                     <div className="avatar">
-                        <img alt="Profile image" src={iconUser} />
+                        <img alt="Profile image" src={prof} />
                     </div>
                     <a href="/">
                         <img className="logo" alt="Homebase logo" src={logo} />

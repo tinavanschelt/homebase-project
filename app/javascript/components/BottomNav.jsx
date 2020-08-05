@@ -13,10 +13,15 @@ class BottomNav extends React.Component {
         super(props)
         this.state = { popupOpen: false }
         this.togglePopup = this.togglePopup.bind(this)
+        this.goToPage = this.goToPage.bind(this)
     }
 
     togglePopup() {
         this.setState({ popupOpen: !this.state.popupOpen })
+    }
+
+    goToPage(path) {
+        window.location = `${window.location.origin}/${path}`
     }
 
     render() {
@@ -26,11 +31,17 @@ class BottomNav extends React.Component {
             <div className="bottom-nav">
                 {popupOpen && (
                     <div className="nav-pop-up">
-                        <div className="nav-pop-up__item">
+                        <div
+                            className="nav-pop-up__item"
+                            onClick={() => this.goToPage('events/new')}
+                        >
                             <img src={iconPlusInverted} alt="New Event" />
                             Create New Event
                         </div>
-                        <div className="nav-pop-up__item">
+                        <div
+                            className="nav-pop-up__item"
+                            onClick={() => this.goToPage('tasks/new')}
+                        >
                             <img src={iconPlusInverted} alt="New Task" />
                             Create New Task
                         </div>
