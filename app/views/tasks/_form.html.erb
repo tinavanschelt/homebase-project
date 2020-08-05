@@ -1,0 +1,58 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :creator_id, value: current_user.id %>
+
+  <div class="field">
+    <%= form.label :assigned_to %>
+    <%= form.number_field :assigned_to %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field field--datetime">
+    <%= form.label :due_at %>
+    <div class="field--datetime__inner">
+      <%= form.datetime_select :due_at %>
+    </div>
+  </div>
+
+  <div class="field field--datetime">
+    <%= form.label :completed_at %>
+    <div class="field--datetime__inner">
+      <%= form.datetime_select :completed_at %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :completed_by %>
+    <%= form.number_field :completed_by %>
+  </div>
+
+  <%= form.label :restricted, class: "field field--checkbox" do %>
+    <%= form.check_box :restricted %>
+    Restricted task
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

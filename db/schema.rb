@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_211025) do
+ActiveRecord::Schema.define(version: 2020_08_05_084923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.integer "organiser_id"
+    t.integer "user_id"
     t.datetime "date"
     t.string "title"
     t.text "description"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_08_04_211025) do
     t.boolean "restricted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "group_id"
   end
 
   create_table "group_members", force: :cascade do |t|
@@ -39,23 +40,23 @@ ActiveRecord::Schema.define(version: 2020_08_04_211025) do
 
   create_table "groups", force: :cascade do |t|
     t.string "title"
-    t.string "group_type"
+    t.integer "group_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "access_code"
   end
 
-  create_table "invitations", force: :cascade do |t|
+  create_table "invitations", id: :bigint, default: -> { "nextval('invitations_tables_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "group_id", null: false
-    t.integer "user_id", null: false
     t.string "email", null: false
     t.boolean "accepted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "creator_id"
+    t.integer "user_id"
     t.integer "assigned_to"
     t.string "title"
     t.text "description"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_08_04_211025) do
     t.boolean "restricted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "group_id"
   end
 
   create_table "users", force: :cascade do |t|

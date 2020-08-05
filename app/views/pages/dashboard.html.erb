@@ -1,3 +1,33 @@
-<h1>Morning!</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<h1>Hi, <%= current_user.first_name %>!</h1>
+<% if @groups.length > 0 %>
+  <h2><%= @group.title %></h2>
+<% end %>
+
+<div class="section">
+  <h4 class="section__title">Events</h4>
+  <% if @events.length > 0 %>
+    nil
+  <% else %>
+    This group does not have any events
+  <% end %>
+  <%= link_to "Create New Event", new_event_path %>
+</div>
+
+<div class="section">
+  <h4 class="section__title">Tasks</h4>
+  <% if @tasks.length > 0 %>
+    nil
+  <% else %>
+    This group does not have any tasks
+  <% end %>
+  <%= link_to "Create New Task", new_task_path %>
+</div>
+
+<div class="box-with-border">
+  <p>
+    Birthdays 🎈<br/>
+    No upcoming birthdays
+  </p>
+</div>
+
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>

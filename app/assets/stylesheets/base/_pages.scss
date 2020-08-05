@@ -5,6 +5,16 @@
     padding: 2em;
 }
 
+.section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+
+    a {
+        margin: 1em 0;
+    }
+}
+
 .list-item {
     align-items: center;
     display: flex;

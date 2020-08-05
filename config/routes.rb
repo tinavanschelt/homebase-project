@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasks
+  resources :events
   root to: "pages#dashboard"
 
   devise_for :users, controllers: {
