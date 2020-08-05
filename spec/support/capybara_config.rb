@@ -73,7 +73,7 @@ Capybara.register_driver(:headless_chrome) do |app|
   driver
 end
 
-Capybara.javascript_driver = ENV["HEAD"].present? ? :chrome : :headless_chrome
+Capybara.javascript_driver = :chrome # ENV["HEAD"].present? ? :chrome : :headless_chrome
 Capybara.default_driver = Capybara.javascript_driver
 
 Capybara.default_host = "http://localhost:#{ENV['PORT'] || 3000}"
