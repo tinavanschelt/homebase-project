@@ -25,7 +25,9 @@ class TopNav extends React.Component {
             <div className="top-nav">
                 <div className="top-nav__items">
                     <div className="avatar">
-                        <img alt="Profile image" src={prof} />
+                        <a href="/">
+                            <img alt="Profile image" src={prof} />
+                        </a>
                     </div>
                     <a href="/">
                         <img className="logo" alt="Homebase logo" src={logo} />
