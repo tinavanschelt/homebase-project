@@ -3,11 +3,20 @@ require "rails_helper"
 RSpec.describe "create events", type: :feature do
   let!(:admin) { users(:admin) }
   let!(:user) { users(:normal) }
+  let!(:group) { groups(:beecham) }
+  let!(:birthday) { events(:birthday)}
+  let!(:bread) { tasks(:bread)}
 
   context "create a new event" do
     before { login_as(user) }
 
+    it "redirects user if user does not have a group" do
+      visit event_path(birthday)
+      expect(page).to have_current_path root_path
+    end
+
     it "successfully creates a new event" do
+      group.add_member(user)
       visit root_path
       expect(page).to have_content "Hi, Anna!"
       click_link "Create New Event"

@@ -41,6 +41,21 @@ RSpec.describe "manage groups", type: :feature do
       visit group_path(group)
       expect(page).to have_current_path group_path(group)
     end
+
+    it "links to Members page" do
+      click_link "Members"
+      expect(page).to have_current_path group_path(group)
+    end
+
+    it "can toggle user status and persist status" do
+      visit group_path(group)
+      expect(page).to have_current_path group_path(group)
+      expect(page).to have_content "Activate"
+      page.first("a", text: "Activate").click
+      expect(page).to have_content "Deactivate"
+      visit group_path(group)
+      expect(page).to have_content "Deactivate"
+    end
   end
 end
 

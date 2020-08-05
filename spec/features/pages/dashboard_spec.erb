@@ -1,0 +1,87 @@
+require "rails_helper"
+
+RSpec.describe "dashboard", type: :feature do
+  let!(:user) { users(:normal) }
+  let!(:group) { create(:group)}
+  let!(:birthday) { events(:birthday)}
+  let!(:bread) { tasks(:bread)}
+
+  context "index" do
+    before do 
+      login_as(user)
+      group.add_member(user)
+      visit root_path
+    end
+
+    it "it shows user name and group title" do
+      expect(page).to have_content "Hi, Anna!"
+      expect(page).to have_content "[#{group.title}]"
+    end
+  end
+
+  context "events" do
+    before do 
+      login_as(user)
+      group.add_member(user)
+      visit root_path
+    end
+
+    it "it links to events page" do
+      expect(page).to have_link "Events"
+      click_link "Events"
+      expect(page).to have_current_path events_path
+    end
+
+    it "does not lists events that are not associated to the group" do
+      expect(page).to have_content "This group does not have any events"
+    end
+    
+    it "it lists all events associated with the current group" do
+      birthday.update_attribute(:group_id, group.id)
+      visit root_path
+      expect(page).to have_content "Birthday Party"
+    end
+  end
+
+  context "tasks" do
+    before do 
+      login_as(user)
+      group.add_member(user)
+      visit root_path
+    end
+
+    it "it links to tasks page" do
+      expect(page).to have_link "Tasks"
+      click_link "Tasks"
+      expect(page).to have_current_path tasks_path
+    end
+
+    it "does not lists tasks that are not associated to the group" do
+      expect(page).to have_content "This group does not have any tasks"
+    end
+
+    it "it lists all tasks associated with the current group" do
+      bread.update_attribute(:group_id, group.id)
+      visit root_path
+      expect(page).to have_content "Bread"
+    end
+
+    it "can toggle tasks completed from the dashboard" do
+      bread.update_attribute(:group_id, group.id)
+      visit root_path
+
+      # not completed by default
+      expect(page).to have_field("task_#{bread.id}", checked: false, visible: false)
+
+      # toggle task
+      find(:css, "#task_#{bread.id}").set(true)
+      expect(page).to have_field("task_#{bread.id}", checked: true, visible: false)
+
+      # persists state
+      visit root_path
+      expect(page).to have_field("task_#{bread.id}", checked: true, visible: false)
+    end
+  end
+end
+
+
