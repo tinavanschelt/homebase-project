@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :ensure_signed_in
   before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle_complete]
   before_action :set_group, only: [:index, :show, :new]
   before_action :set_members, only: [:show, :edit, :new]

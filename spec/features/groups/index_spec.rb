@@ -5,7 +5,16 @@ RSpec.describe "create and manage groups", type: :feature do
   let!(:group) { groups(:beecham) }
 
   context "non users" do
-  
+    it "does not grant user access to the group index, edit or members pages" do
+      visit groups_path
+      expect(page).to have_current_path new_user_session_path
+
+      visit group_path(group)
+      expect(page).to have_current_path new_user_session_path
+
+      visit edit_group_path(group)
+      expect(page).to have_current_path new_user_session_path
+    end
   end
 
   context "create new group" do

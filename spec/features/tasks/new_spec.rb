@@ -6,6 +6,19 @@ RSpec.describe "create tasks", type: :feature do
   let!(:group) { groups(:beecham) }
   let!(:bread) { tasks(:bread)}
 
+  context "non users" do
+    it "does not grant user access to the group index, edit or members pages" do
+      visit tasks_path
+      expect(page).to have_current_path new_user_session_path
+
+      visit task_path(bread)
+      expect(page).to have_current_path new_user_session_path
+
+      visit edit_task_path(bread)
+      expect(page).to have_current_path new_user_session_path
+    end
+  end
+
   context "create a new event" do
     before { login_as(user) }
 

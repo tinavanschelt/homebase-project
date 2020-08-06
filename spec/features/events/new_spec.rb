@@ -7,6 +7,20 @@ RSpec.describe "create events", type: :feature do
   let!(:birthday) { events(:birthday)}
   let!(:bread) { tasks(:bread)}
 
+
+  context "non users" do
+    it "does not grant user access to the group index, edit or members pages" do
+      visit events_path
+      expect(page).to have_current_path new_user_session_path
+
+      visit event_path(birthday)
+      expect(page).to have_current_path new_user_session_path
+
+      visit edit_event_path(birthday)
+      expect(page).to have_current_path new_user_session_path
+    end
+  end
+
   context "create a new event" do
     before { login_as(user) }
 
