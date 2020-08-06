@@ -52,7 +52,7 @@ class TopNav extends React.Component {
                             href="/users/sign_out"
                             data-method="delete"
                         >
-                            Logout
+                            Sign out
                         </a>
                     </div>
                 )}
