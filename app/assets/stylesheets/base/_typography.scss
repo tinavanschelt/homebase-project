@@ -1,6 +1,6 @@
 body {
     color: $color-black;
-    font-family: $base-font-family;
+    font-family: $font;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     line-height: $base-line-height;
@@ -26,23 +26,20 @@ h4,
 .h4,
 h5,
 .h5 {
-    color: $heading-font-color;
+    color: $color-black;
     font-family: $heading-font-family;
-    font-weight: 800;
-    letter-spacing: -0.034em;
+    font-weight: $font-weight-bold;
     display: block;
-    line-height: $heading-line-height;
-    margin: 0 0 2rem;
+    margin: $mv 0;
 
     &.section-title {
-        font-family: $font-base;
+        font-family: $font;
     }
 }
 
 h1,
 .h1 {
     font-size: $h1-font-size;
-    letter-spacing: -0.044em;
     @include breakpoint($bp-md) {
         font-size: 4.2rem;
     }
@@ -50,33 +47,28 @@ h1,
 
 h2,
 .h2 {
-    // color: $base-font-color;
     font-size: $h2-font-size;
-    letter-spacing: -0.044em;
 }
 
 h3,
 .h3 {
     font-size: $h3-font-size;
-    margin: 1.25em 0 0.75em;
 }
 
 h4,
 .h4 {
     font-size: $h4-font-size;
-    font-weight: $font-bold-weight;
 }
 
 h5,
 .h5 {
     font-size: $h5-font-size;
-    font-weight: $font-bold-weight;
 }
 
 p {
     font-size: 1.6rem;
-    line-height: 2;
-    margin: 0 0 $mv;
+    line-height: 1.5;
+    margin: 0 0 $mv-lg;
 
     > a {
         font-weight: 600;
@@ -102,7 +94,7 @@ a {
 
     &:active {
         outline-width: 0;
-        color: darken($action-color, 2%);
+        color: darken($color-eggplant, 2%);
     }
 
     &.btn {
@@ -112,7 +104,7 @@ a {
 
 strong,
 b {
-    font-weight: $font-semibold-weight;
+    font-weight: $font-weight-semibold;
 }
 
 .page-title {

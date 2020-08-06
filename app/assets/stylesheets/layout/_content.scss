@@ -14,45 +14,15 @@
     @include innerpad();
     padding-bottom: 10rem;
     padding-top: 7rem;
+    max-width: $container;
 
     @include breakpoint($bp-md) {
         padding-top: 5rem;
     }
 
-    &--xs {
+    &--small {
         max-width: $container-sm;
         margin-top: 2rem;
-    }
-
-    &--sm {
-        max-width: $container-md;
-    }
-
-    &--md {
-        max-width: 960px;
-    }
-
-    &--lg {
-        @include containerlarge();
-    }
-
-    &--full {
-        max-width: none !important;
-    }
-
-    &--no-pv {
-        padding-bottom: 0;
-        padding-top: 0;
-    }
-
-    &--s-pb {
-        padding-bottom: 2rem;
-    }
-
-    &--faq {
-        h3 {
-            margin: 4rem 0 2rem;
-        }
     }
 }
 

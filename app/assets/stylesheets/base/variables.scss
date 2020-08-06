@@ -54,17 +54,12 @@ $bp-lg: 70em; // 1120px
 $bp-xl: 80em; // 1280px
 $bp-xxl: 120em; // 1920px
 
-//- Font colors
-$base-font-color: $color-gray;
-$heading-font-color: $color-black;
-$action-color: $color-clean;
-
-//- Font families
+//- Typography
 $font-titles: 'Avant Garde Bold', 'Standard CT Bold Cond', 'Akzidenz-Grotesk BQ',
     sans-serif;
-$font-base: -apple-system, BlinkMacSystemFont, 'Nunito', sans-serif;
+$font: -apple-system, BlinkMacSystemFont, 'Nunito', sans-serif;
+$heading-font-family: $font-titles;
 
-//- Font sizes
 $base-font-size: 62.5%; // Lets start everything off at 10px for easy maths
 $h1-font-size: 4.6rem;
 $h2-font-size: 3.2rem;
@@ -76,84 +71,47 @@ $p-font-size: 1.3rem;
 $small-font-size: 1.2rem;
 $xs-font-size: 1.1rem;
 
-$font-bold-weight: 700;
-$font-semibold-weight: 600;
-$font-md-weight: 500;
-$font-light-weight: 300;
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-normal: 500;
+$font-weight-light: 300;
 
 //- Layout
-$container: 118rem;
-$container-lg: 132rem;
-$container-md: 78rem;
+$container: 100rem;
 $container-sm: 56rem;
 $container-pad: 2rem;
 $container-pad-sm: 1rem;
 $container-pad-lg: 4rem;
 
 //- Line height
-$base-line-height: 1.4;
-$heading-line-height: 1.1;
-$line-height-sm: 1.25;
+$base-line-height: 1.6;
 
-//- Spacing (vertical)
+//- Spacing
 $mv: 1em;
 $mv-lg: $mv * 2;
 $mv-sm: $mv / 2;
-$mv-xl: $mv * 4;
-$mv-xs: $mv / 4;
-$mv-xxs: $mv / 6;
-
-//- Spacing (horizontal)
 $mh: 1em;
 $mh-lg: $mh * 2;
 $mh-sm: $mh / 2;
-$mh-xl: $mh * 4;
-$mh-xs: $mh / 4;
-$mh-xxs: $mh / 6;
 
-//- Padding (vertical)
+//- Padding
 $pv: 1em;
 $pv-lg: $pv * 2;
 $pv-sm: $pv / 2;
-$pv-xl: $pv * 4;
-$pv-xs: $pv / 4;
-$pv-xxl: $pv * 6;
-$pv-xxs: $pv / 6;
-
-//- Padding (horizontal)
 $ph: 1em;
 $ph-lg: $ph * 2;
 $ph-sm: $ph / 2;
-$ph-xl: $ph * 4;
-$ph-xs: $ph / 4;
-$ph-xxl: $ph * 6;
-$ph-xxs: $ph / 6;
 
 //- Z-Index
-$z-index: (
-    'date-picker': 10,
-    'floating-action-btn': 9,
-    'actions-link': 8,
-    'modal': 7,
-    'modal-bg': 6,
-    'header': 5,
-    'tabs': 4,
-    'hero-controls': 3,
-    'hero': 2,
-    'default': 1,
-    'below': -1,
-);
+$z-default: 1;
 $z-header: 5;
 
 //- Typography
-$base-font-family: $font-base;
-$heading-font-family: $font-titles;
 
 //- Button
 $button-border-radius: $border-radius;
 $button-font-size: 1.5rem;
 $button-font-weight: 700;
-$button-letter-spacing: 0;
 $button-padding-horizontal: 1.8em;
 $button-padding-vertical: 1.2em;
 $button-padding: $button-padding-vertical $button-padding-horizontal;

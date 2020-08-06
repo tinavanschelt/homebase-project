@@ -23,11 +23,6 @@
         @content;
     }
 }
-@mixin breakpointMax($point) {
-    @media (max-width: $point) {
-        @content;
-    }
-}
 
 @mixin prefix($property, $value) {
     -webkit-#{$property}: #{$value};
@@ -56,20 +51,10 @@
     margin-right: auto;
 
     @include breakpoint($bp-md) {
-        max-width: $container-md;
+        max-width: $container;
     }
     @include breakpoint($bp-md) {
         max-width: $container;
-    }
-}
-
-@mixin containerlarge {
-    width: 100%;
-    max-width: $container-lg;
-    margin-left: auto;
-    margin-right: auto;
-    @include breakpoint($bp-md) {
-        max-width: $container-lg;
     }
 }
 
@@ -78,11 +63,5 @@
     padding-right: $container-pad;
     @include breakpoint($bp-md) {
         @include ph($container-pad-lg);
-    }
-}
-
-@mixin breakoutcontainermobile {
-    @include breakpointMax($bp-md) {
-        @include margin-horizontal(-$container-pad);
     }
 }
