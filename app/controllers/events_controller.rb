@@ -9,19 +9,19 @@ class EventsController < ApplicationController
     if @group.present?
       @events = @group.events
     else
-      redirect_to root_path
+      return redirect_to root_path
     end
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    redirect_to root_path if @group.nil?
+    return redirect_to root_path if @group.nil?
   end
 
   # GET /events/new
   def new
-    redirect_to root_path if @group.nil?
+    return redirect_to root_path if @group.nil?
     @event = Event.new
   end
 

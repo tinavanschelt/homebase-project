@@ -10,19 +10,19 @@ class TasksController < ApplicationController
     if @group.present?
       @tasks = @group.tasks
     else
-      redirect_to root_path
+      return redirect_to root_path
     end
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    redirect_to root_path if @group.nil?
+    return redirect_to root_path if @group.nil?
   end
 
   # GET /tasks/new
   def new
-    redirect_to root_path if @group.nil?
+    return redirect_to root_path if @group.nil?
     @task = Task.new
   end
 
