@@ -4,6 +4,10 @@ RSpec.describe "create and manage groups", type: :feature do
   let!(:user) { users(:admin) }
   let!(:group) { groups(:beecham) }
 
+  context "non users" do
+  
+  end
+
   context "create new group" do
     before do 
       login_as(user)
