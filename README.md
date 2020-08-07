@@ -1,24 +1,55 @@
-# README
+# CW2 Hombase Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Source code to accompany the CW2 project.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+### System dependencies
 
-* System dependencies
+The application uses Rails 6.0. If you don't have Ruby installed on your machine, you can use [`rvm`](https://rvm.io) for versions management.
 
-* Configuration
+```sh
+# using homebrew:
+$ brew update
+$ brew install rbenv
 
-* Database creation
+# install a Ruby version:
+$ rbenv install 2.7.1
 
-* Database initialization
+# Run a postgres database
+$ brew install postgres
+$ brew services start postgresql
+```
 
-* How to run the test suite
+### Ruby Dependencies
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+# install bundler if you don't already have it
+$ gem install bundler
+# install dependencies
+$ bundle install
+```
 
-* Deployment instructions
+### Database setup
 
-* ...
+Postgres is used for the database.
+
+```sh
+# create the database
+$ bin/rails db:create
+# run migrations
+$ bin/rails db:migrate
+```
+
+### Starting the Rails server
+
+```sh
+$ rails s
+```
+
+### Testing
+
+```sh
+# Run tests
+$ rspec spec
+```
