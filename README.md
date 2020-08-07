@@ -1,4 +1,4 @@
-# CW2 Hombase Application
+# CW2 Homebase Application
 
 Source code to accompany the CW2 project.
 
